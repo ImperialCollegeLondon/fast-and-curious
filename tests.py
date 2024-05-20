@@ -14,7 +14,7 @@ def run_tests():
 def test_project_primes():
     from base.primes import write_primes as base_function
     from sample_solution.primes import write_primes as sample_solution_function
-    from src.primes import write_primes as student_function
+    from student.primes import write_primes as student_function
 
     project1_results = ProjectResults('Primes', 'Write primes under n to a specified file.')
 
