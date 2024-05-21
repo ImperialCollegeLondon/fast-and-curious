@@ -18,8 +18,8 @@ def test_project_primes():
 
     project1_results = ProjectResults('Primes', 'Write primes under n to a specified file.')
 
-    project1_results.add_case(primes_run_case(base_function, sample_solution_function, student_function, 1000, '1,000'))
-    project1_results.add_case(primes_run_case(base_function, sample_solution_function, student_function, 10000, '10,000'))
+    project1_results.add_case(primes_run_case(base_function, sample_solution_function, student_function, 1000, '1,000', 'testing_resources/reference_primes_1k.txt'))
+    project1_results.add_case(primes_run_case(base_function, sample_solution_function, student_function, 10000, '10,000', 'testing_resources/reference_primes_10k.txt'))
 
     project1_results.print_results()
 
