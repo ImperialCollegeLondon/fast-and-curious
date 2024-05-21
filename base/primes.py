@@ -1,9 +1,10 @@
-def write_primes(n, filename):
-    open(filename, 'w').close()
+def write_primes(n, path):
+    # Delete the contents of the file if it already exists
+    open(path, 'w').close()
 
     for i in range(2, n + 1):
         if is_prime(i):
-            with open(filename, 'a') as file:
+            with open(path, 'a') as file:
                 file.write(str(i) + '\n')
 
 def is_prime(n):

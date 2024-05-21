@@ -1,9 +1,8 @@
 
-
-def write_primes(n, filename):
+def write_primes(n, path):
     primes = get_primes_under_n(n)
 
-    with open(filename, 'w') as file:
+    with open(path, 'w') as file:
         file.write('\n'.join(map(str, primes)))
 
 def get_primes_under_n(n):
