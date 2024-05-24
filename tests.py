@@ -37,11 +37,11 @@ def test_uncertain_cuboids(print_project_level_output=True):
 
     project1_results = ProjectResults('Uncertain Cuboids', 'Calculate the mean and standard deviation of the volume of cuboids with uncertain dimensions.')
 
-    project1_results.add_case(uncertain_cuboids_run_case(base_function, sample_solution_function, student_function, 1e6, '1,000,000', 10, 5, 3, 0.5, 0.2, 0.1, (149.99, 150.01), (3.11, 3.15)))
+    project1_results.add_case(uncertain_cuboids_run_case(base_function, sample_solution_function, student_function, 1000000, '1,000,000', 10, 5, 3, 0.5, 0.2, 0.1, (149.99, 150.01), (3.11, 3.15)))
 
-    project1_results.add_case(uncertain_cuboids_run_case(base_function, sample_solution_function, student_function, 1e6, '1,000,000', 4, 5, 2, 0, 0, 0, (39.999, 40.001), (0, 0.0001)))
+    project1_results.add_case(uncertain_cuboids_run_case(base_function, sample_solution_function, student_function, 1000000, '1,000,000', 4, 5, 2, 0, 0, 0, (39.999, 40.001), (0, 0.0001)))
 
-    project1_results.add_case(uncertain_cuboids_run_case(base_function, sample_solution_function, student_function, 1e6, '1,000,000', 3, 10, 2, 1, 0, 0, (59, 61), (5.75, 5.78)))
+    project1_results.add_case(uncertain_cuboids_run_case(base_function, sample_solution_function, student_function, 1000000, '1,000,000', 3, 10, 2, 1, 0, 0, (59, 61), (5.75, 5.78)))
 
     if print_project_level_output:
         project1_results.print_results()
