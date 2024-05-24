@@ -4,7 +4,7 @@ import math
 def calculate_uncertain_cuboid_statistics(n_sample, mean_length, mean_width, mean_height, range_length=0, range_width=0, range_height=0):
     volumes = []
 
-    for i in range(int(n_sample)):
+    for i in range(n_sample):
         length = random.uniform(mean_length - range_length / 2, mean_length + range_length / 2)
         width = random.uniform(mean_width - range_width / 2, mean_width + range_width / 2)
         height = random.uniform(mean_height - range_height / 2, mean_height + range_height / 2)
