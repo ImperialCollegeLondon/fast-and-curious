@@ -7,6 +7,8 @@ class ProjectResults:
         self._cases = []
 
     def print_results(self):
+        print_major_division()
+        
         print(f'Project: {self.project_name}')
         print(f'Description: {self.project_description}')
 
