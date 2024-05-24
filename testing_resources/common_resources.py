@@ -8,7 +8,7 @@ class ProjectResults:
 
     def print_results(self):
         print_major_division()
-        
+
         print(f'Project: {self.project_name}')
         print(f'Description: {self.project_description}')
 
@@ -25,7 +25,10 @@ class ProjectResults:
         self.calculate_points()
 
     def calculate_points(self):
-        self.points = sum([case.points for case in self.cases]) / len(self.cases)
+        if all([case.student_success for case in self.cases]):
+            self.points = sum([case.points for case in self.cases])
+        else:
+            self.points = 0
 
     @property
     def cases(self):
