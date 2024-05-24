@@ -4,6 +4,7 @@ from testing_resources.common_resources import ProjectResults, print_minor_divis
 def run_tests():
     project_results = []
     project_results.append(test_project_primes(print_project_level_output=False))
+    project_results.append(test_uncertain_cuboids(print_project_level_output=False))
 
     total_points = sum([project.points for project in project_results])
 
@@ -50,5 +51,4 @@ def test_uncertain_cuboids(print_project_level_output=True):
 
 
 if __name__ == '__main__':
-    #run_tests()
     test_uncertain_cuboids()
