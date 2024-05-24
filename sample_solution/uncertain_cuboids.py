@@ -1,22 +1,21 @@
-import random
-import math
+from scipy.stats import uniform
 
 def calculate_uncertain_cuboid_statistics(n_sample, mean_length, mean_width, mean_height, range_length=0, range_width=0, range_height=0):
-    volumes = []
+    if sum(map(bool, [range_length, range_width, range_height])) == 0:
+        return get_cuboid_volume(mean_length, mean_width, mean_height), 0       
 
-    for i in range(int(n_sample)):
-        length = random.uniform(mean_length - range_length / 2, mean_length + range_length / 2)
-        width = random.uniform(mean_width - range_width / 2, mean_width + range_width / 2)
-        height = random.uniform(mean_height - range_height / 2, mean_height + range_height / 2)
+    length_distribution = uniform(loc=mean_length - range_length / 2, scale=range_length)
+    width_distribution = uniform(loc=mean_width - range_width / 2, scale=range_width)
+    height_distribution = uniform(loc=mean_height - range_height / 2, scale=range_height)
 
-        volume = get_cuboid_volume(length, width, height)
-        volumes.append(volume)
+    lengths = length_distribution.rvs(n_sample)
+    widths = width_distribution.rvs(n_sample)
+    heights = height_distribution.rvs(n_sample)
 
-    mean_volume = sum(volumes) / n_sample
-    total_square = 0
-    for volume in volumes:
-        total_square = total_square + volume ** 2
-    std_volume = math.sqrt((total_square / n_sample) - mean_volume ** 2)
+    volumes = get_cuboid_volume(lengths, widths, heights)
+
+    mean_volume = volumes.mean()
+    std_volume = volumes.std()
 
     return mean_volume, std_volume
 
