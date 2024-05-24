@@ -24,6 +24,3 @@ def calculate_uncertain_cuboid_statistics(n_sample, mean_length, mean_width, mea
 def get_cuboid_volume(length, width, height):
     return length * width * height
 
-
-if __name__ == "__main__":
-    calculate_uncertain_cuboid_statistics(100, 10, 5, 3, 0.5, 0.2, 0.1)
