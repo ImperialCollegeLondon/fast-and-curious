@@ -26,7 +26,7 @@ class ProjectResults:
 
     def calculate_points(self):
         if all([case.student_success for case in self.cases]):
-            self.points = sum([case.points for case in self.cases])
+            self.points = sum([case.points for case in self.cases]) / len(self.cases)
         else:
             self.points = 0
 
