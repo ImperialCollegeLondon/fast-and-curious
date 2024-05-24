@@ -1,13 +1,13 @@
 import random
 import math
 
-def calculate_uncertain_cuboid_statistics(n_sample, mean_length, mean_width, mean_height, range_length=0, range_width=0, range_height=0):
+def calculate_uncertain_cuboid_statistics(n_sample, length, width, height, range_length=0, range_width=0, range_height=0):
     volumes = []
 
     for i in range(n_sample):
-        length = random.uniform(mean_length - range_length / 2, mean_length + range_length / 2)
-        width = random.uniform(mean_width - range_width / 2, mean_width + range_width / 2)
-        height = random.uniform(mean_height - range_height / 2, mean_height + range_height / 2)
+        length = random.uniform(length - range_length / 2, length + range_length / 2)
+        width = random.uniform(width - range_width / 2, width + range_width / 2)
+        height = random.uniform(height - range_height / 2, height + range_height / 2)
 
         volume = get_cuboid_volume(length, width, height)
         volumes.append(volume)
