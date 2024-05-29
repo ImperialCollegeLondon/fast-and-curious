@@ -2,53 +2,80 @@ from testing_resources.common_resources import ProjectResults, print_minor_divis
 
 
 def run_tests():
+    """
+    Runs the test cases for each project and prints the results.
+
+    return: None
+    """
+
+    # Run the test cases for each project
     project_results = []
+    # Add the results of each project to the project_results list
+    # Suppress the project level output for each project
     project_results.append(test_primes(print_project_level_output=False))
     project_results.append(test_uncertain_cuboids(print_project_level_output=False))
 
+    # Calculate the total points for all projects
     total_points = sum([project.points for project in project_results])
 
+    # Print the score for each project
     for project in project_results:
         print(f'{project.project_name}: {format_number(project.points)} points')
         print_minor_division()
+    # Print the total points
     print(f'Total Points: {format_number(total_points)}')
 
 
 def test_primes(print_project_level_output=True):
+    '''Tests the Primes project.
+    :param print_project_level_output: bool, If True, the results of the project will be printed to the console.
+    :return: ProjectResults, The results of the project.
+    '''
     from testing_resources.primes import primes_run_case
     from base.primes import write_primes as base_function
     from sample_solution.primes import write_primes as sample_solution_function
     from student.primes import write_primes as student_function
 
+    # Create a ProjectResults object to store the results of the project
     project_results = ProjectResults('Primes', 'Write primes under n to a specified file.')
 
+    # Add test cases to the project
     project_results.add_case(primes_run_case(base_function, sample_solution_function, student_function, 1000, '1,000', 'testing_resources/reference_primes_1k.txt'))
     project_results.add_case(primes_run_case(base_function, sample_solution_function, student_function, 10000, '10,000', 'testing_resources/reference_primes_10k.txt'))
 
+    # Print the results of the project if print_project_level_output is True
     if print_project_level_output:
         project_results.print_results()
 
+    # Return the results of the project
     return project_results
 
 def test_uncertain_cuboids(print_project_level_output=True):
+    '''Tests the Uncertain Cuboids project.
+    :param print_project_level_output: bool, If True, the results of the project will be printed to the console.
+    :return: ProjectResults, The results of the project.
+    '''
+
     from testing_resources.uncertain_cuboids import uncertain_cuboids_run_case
     from base.uncertain_cuboids import calculate_uncertain_cuboid_statistics as base_function
     from sample_solution.uncertain_cuboids import calculate_uncertain_cuboid_statistics as sample_solution_function
     from student.uncertain_cuboids import calculate_uncertain_cuboid_statistics as student_function
 
+    # Create a ProjectResults object to store the results of the project
     project_results = ProjectResults('Uncertain Cuboids', 'Calculate the mean and standard deviation of the volume of cuboids with uncertain dimensions.')
 
+    # Add test cases to the project
     project_results.add_case(uncertain_cuboids_run_case(base_function, sample_solution_function, student_function, 1000000, '1,000,000', 10, 5, 3, 0.5, 0.2, 0.1, (149.99, 150.01), (3.11, 3.15)))
-
     project_results.add_case(uncertain_cuboids_run_case(base_function, sample_solution_function, student_function, 1000000, '1,000,000', 4, 5, 2, 0, 0, 0, (39.999, 40.001), (0, 0.0001)))
-
     project_results.add_case(uncertain_cuboids_run_case(base_function, sample_solution_function, student_function, 1000000, '1,000,000', 3, 10, 2, 1, 0, 0, (59, 61), (5.75, 5.78)))
 
+    # Print the results of the project if print_project_level_output is True
     if print_project_level_output:
         project_results.print_results()
 
+    # Return the results of the project
     return project_results
 
-
+# Run the tests if the file is run directly
 if __name__ == '__main__':
     run_tests()
