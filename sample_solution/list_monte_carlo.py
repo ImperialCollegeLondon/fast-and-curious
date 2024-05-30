@@ -72,16 +72,32 @@ def generate_numbers(median, mode_, range_):
     
     return numbers
 
+
+"""
+# this part should be used for testing 
 # generate lists using Monte Carlo method
-list_numbers = []
-for i in range(1000):
-    numbers = generate_numbers(median=7, mode_=8, range_=5)
-    found = False
-    for lst in list_numbers:
-        tmp_found = False
-        if len(list(set(lst)-set(numbers))) == 0:
-            tmp_found = True
-        found = found or tmp_found
-    if not found:
-        list_numbers.append(numbers)
-print(list_numbers)
+import time, math
+timings = []
+for j in range(10000):
+    t0 = time.time()
+    list_numbers = []
+    for i in range(1000):
+        numbers = generate_numbers(median=7, mode_=8, range_=5)
+        found = False
+        for lst in list_numbers:
+            tmp_found = False
+            if len(list(set(lst)-set(numbers))) == 0:
+                tmp_found = True
+            found = found or tmp_found
+        if not found:
+            list_numbers.append(numbers)
+    #print(list_numbers)
+    t1 = time.time()
+    timings.append(t1-t0)
+mean = sum(timings)/len(timings)
+
+var  = sum(pow(x-mean,2) for x in timings) / len(timings)  # variance
+std  = math.sqrt(var)  # standard deviation
+print("The five numbers are: %s \n Total time is %s sec, \n  max is %s, \n  min is %s, \n mean is %s, \n  std is %s \n" % 
+      (list_numbers, sum(timings), max(timings), min(timings), mean, std))
+"""
