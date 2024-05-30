@@ -34,6 +34,7 @@ def generate_numbers(n, median, mode_, range_):
       - Range:
       
     Args:
+      n: repeat n time to find all answers.
       median: Target median value.
       mode_: Target mode value (most frequent number).
       range_: Target range of the numbers.
