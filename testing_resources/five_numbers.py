@@ -21,7 +21,7 @@ def five_numbers_run_case(base_function, sample_solution_function, student_funct
     case_name = f'All five numbers with median {median}, mode {mode_}, range {range_}'
 
     # Measure the time taken by the base function
-    base_time = time_function(base_function, n, median, mode_, range_)[0]
+    base_time, base_results = time_function(base_function, n, median, mode_, range_)
 
     # Measure the time taken by the sample solution function
     sample_solution_time = time_function(sample_solution_function, n, median, mode_, range_)[0]
@@ -38,9 +38,20 @@ def five_numbers_run_case(base_function, sample_solution_function, student_funct
     if not isinstance(student_results, tuple) or len(student_results) != 3:
         # Check if the student's function returned the expected number of results
         print(f'Your function did not return Three values when asked to find all five numbers with median {median}, mode {mode_}, range {range_}')
+        print(f'Base answer is {base_results}, Your answer is {student_results}')
         return Profiling_Case(case_name, base_time, sample_solution_time, False, student_solution_time)
     
-    #student_mean, student_std = student_results
+    # check if student's results are in the base_results.
+    found = 0
+    for student_lst in student_results:
+        for base_lst in base_results:
+            if (len(list(set(student_lst)-set(base_lst)))):
+                found = found + 1
+    if found < 3:
+        return Profiling_Case(case_name, base_time, sample_solution_time, False, student_solution_time)
+        print(f'Base answer is {base_results}, Your answer is {student_results}')
+
+
 
     #if not isinstance(student_mean, (int, float)) or not isinstance(student_std, (int, float)):
         # Check if the student's function returned the expected types for mean and standard deviation
