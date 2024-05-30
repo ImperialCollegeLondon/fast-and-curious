@@ -15,6 +15,8 @@ def run_tests():
     project_results.append(test_primes(print_project_level_output=False))
     project_results.append(test_uncertain_cuboids(print_project_level_output=False))
 
+    project_results.append(test_five_numbers(print_project_level_output=False))
+
     # Calculate the total points for all projects
     total_points = sum([project.points for project in project_results])
 
@@ -68,6 +70,29 @@ def test_uncertain_cuboids(print_project_level_output=True):
     project_results.add_case(uncertain_cuboids_run_case(base_function, sample_solution_function, student_function, 1000000, '1,000,000', 10, 5, 3, 0.5, 0.2, 0.1, (149.99, 150.01), (3.11, 3.15)))
     project_results.add_case(uncertain_cuboids_run_case(base_function, sample_solution_function, student_function, 1000000, '1,000,000', 4, 5, 2, 0, 0, 0, (39.999, 40.001), (0, 0.0001)))
     project_results.add_case(uncertain_cuboids_run_case(base_function, sample_solution_function, student_function, 1000000, '1,000,000', 3, 10, 2, 1, 0, 0, (59, 61), (5.75, 5.78)))
+
+    # Print the results of the project if print_project_level_output is True
+    if print_project_level_output:
+        project_results.print_results()
+
+    # Return the results of the project
+    return project_results
+
+def test_five_numbers(print_project_level_output=True):
+    '''Tests the five numbers generation.
+    :param print_project_level_output: bool, If True, the results of the project will be printed to the console.
+    :return: ProjectResults, The results of the project.
+    '''
+    from testing_resources.five_numbers import  five_numbers_run_case
+    from base.five_numbers_monte_carlo import generate_numbers as base_function
+    from sample_solution.five_numbers_monte_carlo import generate_numbers as sample_solution_function
+    from student.five_numbers_monte_carlo import generate_numbers as student_function
+
+    # Create a ProjectResults object to store the results of the project
+    project_results = ProjectResults('Five numbers', 'Generate all five numbers satisfying median of 7, mode of 8 and range of 5')
+
+    # Add test cases to the project
+    project_results.add_case(five_numbers_run_case(base_function, sample_solution_function, student_function, median=7, mode_=8, range_=5))
 
     # Print the results of the project if print_project_level_output is True
     if print_project_level_output:
