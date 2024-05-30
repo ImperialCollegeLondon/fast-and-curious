@@ -60,7 +60,7 @@ def generate_numbers(median, mode_, range_):
         numbers = [mode_] * 2  # Two numbers set to the mode
         numbers.append(median)
         min_num = mode_ - range_
-        numbers.extend([random.randint(min_num, median) for _ in range(2)])
+        numbers.extend([random.randint(min_num, median-1) for _ in range(2)])
         # Shuffle the list to randomize positions
         random.shuffle(numbers)
         # check if the range is the same
