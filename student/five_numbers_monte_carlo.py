@@ -56,17 +56,10 @@ def generate_numbers(median, mode_, range_):
     
     return numbers
 
-# generate lists using Monte Carlo method
+# generate five numbers 
 
-list_numbers = []
-for i in range(1000):
-    numbers = generate_numbers(median=7, mode_=8, range_=5)
-    found = False
-    for lst in list_numbers:
-        tmp_found = False
-        if len(list(set(lst)-set(numbers))) == 0:
-            tmp_found = True
-        found = found or tmp_found
-    if not found:
-        list_numbers.append(numbers)
-print(list_numbers)
+
+
+numbers = generate_numbers(median=7, mode_=8, range_=5)
+
+print(numbers)
