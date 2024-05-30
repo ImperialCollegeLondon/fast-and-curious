@@ -1,3 +1,5 @@
+# optimised solution
+
 import random
 """
 Generates all possible five random numbers satisfying:
