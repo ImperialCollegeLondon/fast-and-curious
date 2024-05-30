@@ -92,7 +92,7 @@ def test_five_numbers(print_project_level_output=True):
     project_results = ProjectResults('Five numbers', 'Generate all five numbers satisfying median of 7, mode of 8 and range of 5')
 
     # Add test cases to the project
-    project_results.add_case(five_numbers_run_case(base_function, sample_solution_function, student_function, median=7, mode_=8, range_=5))
+    project_results.add_case(five_numbers_run_case(base_function, sample_solution_function, student_function, 100, median=7, mode_=8, range_=5))
 
     # Print the results of the project if print_project_level_output is True
     if print_project_level_output:

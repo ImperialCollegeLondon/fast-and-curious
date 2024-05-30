@@ -26,7 +26,7 @@ def mode(lst):
     else:
         return statistics.multimode(lst)
             
-def generate_numbers(median, mode_, range_):
+def generate_numbers(n, median, mode_, range_):
     """
     Generates all possible five random numbers satisfying the given:
       - Median:
