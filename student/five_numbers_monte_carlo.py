@@ -60,6 +60,6 @@ def generate_numbers(median, mode_, range_):
 
 
 
-numbers = generate_numbers(median=7, mode_=8, range_=5)
+#numbers = generate_numbers(median=7, mode_=8, range_=5)
 
-print(numbers)
+#print(numbers)

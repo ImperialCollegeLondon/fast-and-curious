@@ -57,7 +57,7 @@ def generate_numbers(median, mode_, range_):
     return numbers
 
 # generate lists using Monte Carlo method
-
+"""
 list_numbers = []
 for i in range(1000):
     numbers = generate_numbers(median=7, mode_=8, range_=5)
@@ -70,3 +70,5 @@ for i in range(1000):
     if not found:
         list_numbers.append(numbers)
 print(list_numbers)
+
+"""
