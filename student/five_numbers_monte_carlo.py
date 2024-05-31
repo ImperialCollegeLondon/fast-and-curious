@@ -26,7 +26,7 @@ def mode(lst):
     else:
         return statistics.multimode(lst)
             
-def generate_numbers(median, mode_, range_):
+def generate_numbers(n, median, mode_, range_):
     """
     Generates all possible five random numbers satisfying the given:
       - Median:
@@ -34,6 +34,7 @@ def generate_numbers(median, mode_, range_):
       - Range:
       
     Args:
+      n: repeat n time to find all answers.
       median: Target median value.
       mode_: Target mode value (most frequent number).
       range_: Target range of the numbers.
@@ -56,17 +57,10 @@ def generate_numbers(median, mode_, range_):
     
     return numbers
 
-# generate lists using Monte Carlo method
+# generate five numbers 
 
-list_numbers = []
-for i in range(1000):
-    numbers = generate_numbers(median=7, mode_=8, range_=5)
-    found = False
-    for lst in list_numbers:
-        tmp_found = False
-        if len(list(set(lst)-set(numbers))) == 0:
-            tmp_found = True
-        found = found or tmp_found
-    if not found:
-        list_numbers.append(numbers)
-print(list_numbers)
+
+
+#numbers = generate_numbers(median=7, mode_=8, range_=5)
+
+#print(numbers)
