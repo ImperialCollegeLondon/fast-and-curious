@@ -20,6 +20,7 @@ def largest_triangle_proof(n, radius):
     # set the centre of the circle to (0,0)
     origin_x = 0.0
     origin_y = 0.0
+    n = 7
 
     #The lower this value the higher quality the circle is with more points generated
     stepSize = 180/n
