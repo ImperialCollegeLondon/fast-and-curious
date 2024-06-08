@@ -73,6 +73,7 @@ def largest_triangle_area(n, radius, h=0.0):
             largest_A.append(area)
         elif area>=max(largest_A):
             largest_A.append(area)
+    print(f"The largest area of a triangle inscribed in a circle with radius {radius} is {max(largest_A):.2f} \n ")
     return max(largest_A)
 
 # Example usage
