@@ -45,19 +45,22 @@ def largest_triangle_proof(n, radius):
     
     return(best_h)
 
-def largest_triangle_area(radius, h, n):
+def largest_triangle_area(n, radius, h=0.0):
     """
     Returns the largest area of a triangle that can be inscribed inside a
     circle with the given radius.
 
     Args:
+      n: gradient
       radius: radius of the circle
       h: the starting height of triangle found after the proof of max area based on diameter as the base of triangle
-      n: gradient
+      
 
     Returns:
       Area of the largest inscribed triangle
     """
+
+    h = largest_triangle_proof(n, radius)
     # The largest triangle is an equilateral triangle
     largest_A = 0.0
     step = radius / n
@@ -74,10 +77,10 @@ def largest_triangle_area(radius, h, n):
     return largest_A
 
 # Example usage
-import time
+#import time
 #radius = 50
 #t0 = time.time()
 #height = largest_triangle_proof(500, radius)
-#max_area = largest_triangle_area(radius, height, 100)
+#max_area = largest_triangle_area(500, radius, height)
 #t1 = time.time()
 #print(f"The largest area of a triangle inscribed in a circle with radius {radius} is {max_area:.2f} \n Runtime was {t1-t0:.5f}")
