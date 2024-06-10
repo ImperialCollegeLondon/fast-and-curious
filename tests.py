@@ -16,6 +16,7 @@ def run_tests():
     project_results.append(test_uncertain_cuboids(print_project_level_output=False))
 
     project_results.append(test_five_numbers(print_project_level_output=False))
+    project_results.append(test_largest_triangle(print_project_level_output=False))
 
     # Calculate the total points for all projects
     total_points = sum([project.points for project in project_results])
@@ -93,6 +94,29 @@ def test_five_numbers(print_project_level_output=True):
 
     # Add test cases to the project
     project_results.add_case(five_numbers_run_case(base_function, sample_solution_function, student_function, 100, median=7, mode_=8, range_=5))
+
+    # Print the results of the project if print_project_level_output is True
+    if print_project_level_output:
+        project_results.print_results()
+
+    # Return the results of the project
+    return project_results
+
+def test_largest_triangle(print_project_level_output=True):
+    '''Tests the five numbers generation.
+    :param print_project_level_output: bool, If True, the results of the project will be printed to the console.
+    :return: ProjectResults, The results of the project.
+    '''
+    from testing_resources.largest_triangle import  largest_triangle_run_case
+    from base.largest_inscribed_triangle import largest_triangle_area as base_function
+    from sample_solution.largest_inscribed_triangle import largest_triangle_area as sample_solution_function
+    from student.largest_inscribed_triangle import largest_triangle_area as student_function
+
+    # Create a ProjectResults object to store the results of the project
+    project_results = ProjectResults('Largest Inscribed Triangle', 'The largest inscribed triangle in the given circle with radius 50')
+
+    # Add test cases to the project
+    project_results.add_case(largest_triangle_run_case(base_function, sample_solution_function, student_function, 500, radius=50, h=0.0))
 
     # Print the results of the project if print_project_level_output is True
     if print_project_level_output:
