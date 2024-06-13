@@ -128,3 +128,4 @@ def test_largest_triangle(print_project_level_output=True):
 # Run the tests if the file is run directly
 if __name__ == '__main__':
     run_tests()
+

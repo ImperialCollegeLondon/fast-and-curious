@@ -1,13 +1,13 @@
 import random
 import math
 
-def calculate_uncertain_cuboid_statistics(n_sample, length, width, height, range_length=0, range_width=0, range_height=0):
+def calculate_uncertain_cuboid_statistics(n_sample, mean_length, mean_width, mean_height, range_length=0, range_width=0, range_height=0):
     '''
     Calculate the mean and standard deviation of the volume of a cuboid with uncertain dimensions.
     :param n_sample: int, The number of samples to take.
-    :param length: float, The mean length of the cuboid.
-    :param width: float, The mean width of the cuboid.
-    :param height: float, The mean height of the cuboid.
+    :param mean_length: float, The mean length of the cuboid.
+    :param mean_width: float, The mean width of the cuboid.
+    :param mean_height: float, The mean height of the cuboid.
     :param range_length: float, The range of the length of the cuboid.
     :param range_width: float, The range of the width of the cuboid.
     :param range_height: float, The range of the height of the cuboid.
@@ -18,11 +18,11 @@ def calculate_uncertain_cuboid_statistics(n_sample, length, width, height, range
     volumes = []
 
     # Loop over the number of samples
-    for i in range(n_sample):
+    for i in range(n_sample): 
         # Generate random dimensions for the cuboid
-        length = random.uniform(length - range_length / 2, length + range_length / 2)
-        width = random.uniform(width - range_width / 2, width + range_width / 2)
-        height = random.uniform(height - range_height / 2, height + range_height / 2)
+        length = random.uniform(mean_length - range_length / 2, mean_length + range_length / 2)
+        width = random.uniform(mean_width - range_width / 2, mean_width + range_width / 2)
+        height = random.uniform(mean_height - range_height / 2, mean_height + range_height / 2)
 
         # Calculate the volume of the cuboid
         volume = get_cuboid_volume(length, width, height)
