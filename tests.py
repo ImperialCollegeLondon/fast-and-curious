@@ -53,6 +53,31 @@ def test_primes(print_project_level_output=True):
     # Return the results of the project
     return project_results
 
+def test_fibonacci(print_project_level_output=True):
+    '''Tests the Fibonacci project.
+    :param print_project_level_output: bool, If True, the results of the project will be printed to the console.
+    :return: ProjectResults, The results of the project.
+    '''
+    from testing_resources.fibonacci import fibonacci_run_case
+    from base.fibonacci import fibonacci as base_function
+    from sample_solution.fibonacci import fibonacci as sample_solution_function
+    from student.fibonacci import fibonacci as student_function
+
+    # Create a ProjectResults object to store the results of the project
+    project_results = ProjectResults('Fibonacci', 'Determine the nth fibonacci number.')
+
+    # Add test cases to the project
+    project_results.add_case(fibonacci_run_case(base_function, sample_solution_function, student_function, 1))
+    project_results.add_case(fibonacci_run_case(base_function, sample_solution_function, student_function, 10))
+    project_results.add_case(fibonacci_run_case(base_function, sample_solution_function, student_function, 35))
+
+    # Print the results of the project if print_project_level_output is True
+    if print_project_level_output:
+        project_results.print_results()
+
+    # Return the results of the project
+    return project_results
+
 def test_uncertain_cuboids(print_project_level_output=True):
     '''Tests the Uncertain Cuboids project.
     :param print_project_level_output: bool, If True, the results of the project will be printed to the console.
