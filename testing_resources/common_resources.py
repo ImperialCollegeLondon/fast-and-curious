@@ -102,7 +102,7 @@ class Profiling_Case():
         self.sample_solution_time = sample_solution_time
         self.student_success = student_success
         self.student_time = student_time
-        if student_success:
+        if student_success and self.base_time > 0:
             self.points = max(math.log10(self.base_time / max(self.student_time, self.base_time * 1e-5)), 0)
         else:
             self.points = 0
