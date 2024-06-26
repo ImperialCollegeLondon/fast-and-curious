@@ -19,6 +19,7 @@ def run_tests():
     project_results.append(test_largest_triangle(print_project_level_output=False))
 
     project_results.append(test_fibonacci(print_project_level_output=False))
+    project_results.append(test_shuffling_cards(print_project_level_output=False))
 
     # Calculate the total points for all projects
     total_points = sum([project.points for project in project_results])
@@ -72,6 +73,38 @@ def test_fibonacci(print_project_level_output=True):
     project_results.add_case(fibonacci_run_case(base_function, sample_solution_function, student_function, 1))
     project_results.add_case(fibonacci_run_case(base_function, sample_solution_function, student_function, 10))
     project_results.add_case(fibonacci_run_case(base_function, sample_solution_function, student_function, 35))
+
+    # Print the results of the project if print_project_level_output is True
+    if print_project_level_output:
+        project_results.print_results()
+
+    # Return the results of the project
+    return project_results
+
+def test_shuffling_cards(print_project_level_output=True):
+    '''Tests the Shuffling Cards project.
+    :param print_project_level_output: bool, If True, the results of the project will be printed to the console.
+    :return: ProjectResults, The results of the project.
+    '''
+    from testing_resources.shuffling_cards import shuffling_cards_run_case
+    from testing_resources.shuffling_cards_input import case_1_input, case_2_input
+    from base.shuffling_cards import find_card_position as base_function
+    from sample_solution.shuffling_cards import find_card_position as sample_solution_function
+    from student.shuffling_cards import find_card_position as student_function
+    
+
+    # Create a ProjectResults object to store the results of the project
+    project_results = ProjectResults('Shuffling Cards', 'Determine the card position.')
+
+    # Test case 1
+    project_results.add_case(
+        shuffling_cards_run_case(base_function, sample_solution_function, student_function, **case_1_input)
+    )
+    
+    # Test case 2
+    project_results.add_case(
+        shuffling_cards_run_case(base_function, sample_solution_function, student_function, **case_2_input)
+    )
 
     # Print the results of the project if print_project_level_output is True
     if print_project_level_output:
