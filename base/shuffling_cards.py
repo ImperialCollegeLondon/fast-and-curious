@@ -53,7 +53,11 @@ def deal(deck):
 
 def faro_shuffle(deck):
     """
-    Helper function to perform a Faro shuffle (perfect shuffle) on the deck.
+    Helper function to perform a Faro out-shuffle on the deck
+
+    A faro out-shuffle (also known as a perfect, or weave, out-shuffle)
+    involves splitting the deck into two equal halves and then interleaving them
+    perfectly, starting with the top card of the original deck. 
 
     Args:
     - deck (list): List representing the deck of cards.
