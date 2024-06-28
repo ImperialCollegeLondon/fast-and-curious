@@ -163,7 +163,7 @@ def test_five_numbers(print_project_level_output=True):
     return project_results
 
 def test_largest_triangle(print_project_level_output=True):
-    '''Tests the five numbers generation.
+    '''Tests the largest inscribed triangle in a circle.
     :param print_project_level_output: bool, If True, the results of the project will be printed to the console.
     :return: ProjectResults, The results of the project.
     '''
