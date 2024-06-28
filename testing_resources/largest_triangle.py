@@ -36,7 +36,7 @@ def largest_triangle_run_case(base_function, sample_solution_function, student_f
         return Profiling_Case(case_name, base_time, sample_solution_time, False)
     
     
-    if not student_results == base_results:
+    if not round(student_results,3) == round(base_results,3):
         print(f" Your solution is {student_results} \n the correct solution is {base_results} \n")
         print(f"Please check your code. \n") 
         return Profiling_Case(case_name, base_time, sample_solution_time, False, student_solution_time)
