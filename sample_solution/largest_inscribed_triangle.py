@@ -73,7 +73,7 @@ def largest_triangle_area(n, radius, h=0.0):
         area = 0.5 * base_length * (d + h)
         largest_A = max(largest_A, area)
         d += step
-    print(f"The largest area of a triangle inscribed in a circle with radius {radius} is {largest_A:.2f} \n ")
+    #print(f"The largest area of a triangle inscribed in a circle with radius {radius} is {largest_A:.2f} \n ")
     return largest_A
 
 # Example usage
