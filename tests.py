@@ -202,7 +202,7 @@ def test_projectiles(print_project_level_output=True):
 
     # Add test cases to the project
     project_results.add_case(projectiles_run_case(base_function, sample_solution_function, student_function, 100, 100, 60, 0.5, 0.01, 1.67))
-    project_results.add_case(projectiles_run_case(base_function, sample_solution_function, student_function, 0.1, 100, 60, 0.5, 0.01, 10.1))
+    project_results.add_case(projectiles_run_case(base_function, sample_solution_function, student_function, 0.1, 100, 60, 0.5, 0.01, 10.2))
     project_results.add_case(projectiles_run_case(base_function, sample_solution_function, student_function, 10, 100, 900, 0.5, 0.001, 32.3))
 
     # Print the results of the project if print_project_level_output is True
