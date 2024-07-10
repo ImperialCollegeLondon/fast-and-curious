@@ -21,6 +21,8 @@ def run_tests():
     project_results.append(test_fibonacci(print_project_level_output=False))
     project_results.append(test_shuffling_cards(print_project_level_output=False))
 
+    project_results.append(test_projectiles(print_project_level_output=False))
+
     # Calculate the total points for all projects
     total_points = sum([project.points for project in project_results])
 
@@ -177,6 +179,31 @@ def test_largest_triangle(print_project_level_output=True):
 
     # Add test cases to the project
     project_results.add_case(largest_triangle_run_case(base_function, sample_solution_function, student_function, 500, radius=50, h=0.0))
+
+    # Print the results of the project if print_project_level_output is True
+    if print_project_level_output:
+        project_results.print_results()
+
+    # Return the results of the project
+    return project_results
+
+def test_projectiles(print_project_level_output=True):
+    '''Tests the Projectiles project.
+    :param print_project_level_output: bool, If True, the results of the project will be printed to the console.
+    :return: ProjectResults, The results of the project.
+    '''
+    from testing_resources.projectiles import projectiles_run_case
+    from base.projectiles import find_launch_angle as base_function
+    from sample_solution.projectiles import find_launch_angle as sample_solution_function
+    from student.projectiles import find_launch_angle as student_function
+
+    # Create a ProjectResults object to store the results of the project
+    project_results = ProjectResults('Projectiles', 'Calculate the launch angle of a projectile to hit a target at a given distance.')
+
+    # Add test cases to the project
+    project_results.add_case(projectiles_run_case(base_function, sample_solution_function, student_function, 100, 100, 60, 0.5, 0.01, 1.67))
+    project_results.add_case(projectiles_run_case(base_function, sample_solution_function, student_function, 0.1, 100, 60, 0.5, 0.01, 10.1))
+    project_results.add_case(projectiles_run_case(base_function, sample_solution_function, student_function, 10, 100, 900, 0.5, 0.001, 32.3))
 
     # Print the results of the project if print_project_level_output is True
     if print_project_level_output:
