@@ -34,19 +34,29 @@ def projectiles_run_case(base_function, sample_solution_function, student_functi
         traceback.print_exception(type(e), e, e.__traceback__)
         return Profiling_Case(case_name, base_time, sample_solution_time, False)
 
-    try:
-        student_angle = float(student_angle)
-    except TypeError:
-        # If the angle returned by the student's function cannot be converted to a float, print an error message and return a failed test case
-        print(f'Your code did not return a number when asked to calculate the launch angle for a projectile with a mass of {mass}kg, a velocity of {velocity}m/s, a target distance of {distance}m, a drag coefficient of {drag_coefficient}, and a cross-sectional area of {cross_section_area}m^2 to hit a target at {distance}m.')
-        return Profiling_Case(case_name, base_time, sample_solution_time, False, student_solution_time)
-    except ValueError:
-        # If the angle returned by the student's function cannot be converted to a float, print an error message and return a failed test case
-        print(f'Your code did not return a number when asked to calculate the launch angle for a projectile with a mass of {mass}kg, a velocity of {velocity}m/s, a target distance of {distance}m, a drag coefficient of {drag_coefficient}, and a cross-sectional area of {cross_section_area}m^2 to hit a target at {distance} m.')
-        return Profiling_Case(case_name, base_time, sample_solution_time, False, student_solution_time)
-    
-    if abs(student_angle - correct_angle) <= 0.1:
-        return Profiling_Case(case_name, base_time, sample_solution_time, True, student_solution_time)
+    if correct_angle:
+        # If the projectile should hit the target, check if the student's angle is within 0.1 degrees of the correct angle
+        try:
+            student_angle = float(student_angle)
+        except TypeError:
+            # If the angle returned by the student's function cannot be converted to a float, print an error message and return a failed test case
+            print(f'Your code did not return a number when asked to calculate the launch angle for a projectile with a mass of {mass}kg, a velocity of {velocity}m/s, a target distance of {distance}m, a drag coefficient of {drag_coefficient}, and a cross-sectional area of {cross_section_area}m^2 to hit a target at {distance}m.')
+            return Profiling_Case(case_name, base_time, sample_solution_time, False, student_solution_time)
+        except ValueError:
+            # If the angle returned by the student's function cannot be converted to a float, print an error message and return a failed test case
+            print(f'Your code did not return a number when asked to calculate the launch angle for a projectile with a mass of {mass}kg, a velocity of {velocity}m/s, a target distance of {distance}m, a drag coefficient of {drag_coefficient}, and a cross-sectional area of {cross_section_area}m^2 to hit a target at {distance} m.')
+            return Profiling_Case(case_name, base_time, sample_solution_time, False, student_solution_time)
+        
+        if abs(student_angle - correct_angle) <= 0.1:
+            return Profiling_Case(case_name, base_time, sample_solution_time, True, student_solution_time)
+        else:
+            print(f'Your code returned an angle of {student_angle} degrees when asked to calculate the launch angle for a projectile with a mass of {mass}kg, a velocity of {velocity}m/s, a target distance of {distance}m, a drag coefficient of {drag_coefficient}, and a cross-sectional area of {cross_section_area}m^2 to hit a target at {distance} m. This was not within 0.1 degree of the correct angle of {correct_angle} degrees.')
+            return Profiling_Case(case_name, base_time, sample_solution_time, False, student_solution_time)
     else:
-        print(f'Your code returned an angle of {student_angle} degrees when asked to calculate the launch angle for a projectile with a mass of {mass}kg, a velocity of {velocity}m/s, a target distance of {distance}m, a drag coefficient of {drag_coefficient}, and a cross-sectional area of {cross_section_area}m^2 to hit a target at {distance} m. This was not within 0.1 degree of the correct angle of {correct_angle} degrees.')
-        return Profiling_Case(case_name, base_time, sample_solution_time, False, student_solution_time)
+        # If there is no angle that will hit the target, check if the student's function returned None
+        if student_angle is None:
+            return Profiling_Case(case_name, base_time, sample_solution_time, True, student_solution_time)
+        else:
+            print(f'Your code was asked to calculate the launch angle for a projectile with a mass of {mass}kg, a velocity of {velocity}m/s, a target distance of {distance}m, a drag coefficient of {drag_coefficient}, and a cross-sectional area of {cross_section_area}m^2 to hit a target at {distance}m. There is no valid angle to hit the target so your code should have returned None, but it returned {student_angle}.')
+            return Profiling_Case(case_name, base_time, sample_solution_time, False, student_solution_time)
+

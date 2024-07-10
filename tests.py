@@ -201,6 +201,7 @@ def test_projectiles(print_project_level_output=True):
     project_results = ProjectResults('Projectiles', 'Calculate the launch angle of a projectile to hit a target at a given distance.')
 
     # Add test cases to the project
+    project_results.add_case(projectiles_run_case(base_function, sample_solution_function, student_function, 100, 10, 5000, 0.4, 0.01, None))
     project_results.add_case(projectiles_run_case(base_function, sample_solution_function, student_function, 100, 100, 60, 0.5, 0.01, 1.67))
     project_results.add_case(projectiles_run_case(base_function, sample_solution_function, student_function, 0.1, 100, 60, 0.5, 0.01, 10.2))
     project_results.add_case(projectiles_run_case(base_function, sample_solution_function, student_function, 10, 100, 900, 0.5, 0.001, 32.3))
@@ -214,5 +215,6 @@ def test_projectiles(print_project_level_output=True):
 
 # Run the tests if the file is run directly
 if __name__ == '__main__':
-    run_tests()
+    #run_tests()
+    test_projectiles()
 
