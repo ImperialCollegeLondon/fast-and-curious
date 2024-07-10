@@ -215,6 +215,5 @@ def test_projectiles(print_project_level_output=True):
 
 # Run the tests if the file is run directly
 if __name__ == '__main__':
-    #run_tests()
-    test_projectiles()
+    run_tests()
 
