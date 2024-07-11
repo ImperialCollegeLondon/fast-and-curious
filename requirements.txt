@@ -4,3 +4,4 @@ pandas
 numba
 line_profiler
 ipykernel
+matplotlib
