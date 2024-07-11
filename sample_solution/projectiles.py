@@ -1,7 +1,9 @@
 import math
 from scipy.integrate import solve_ivp
 from scipy.optimize import bisect
+from scipy.optimize import fsolve
 import numpy as np
+import numba
 
 def find_launch_angle(mass, velocity, distance, drag_coefficient, cross_section_area):
     '''
@@ -42,6 +44,9 @@ def calculate_distance(mass, velocity, angle, drag_coefficient, cross_section_ar
     :param cross_section_area: float, The cross-sectional area of the projectile in m^2.
     :return: float, The distance the projectile will travel in m.
     '''
+
+    # Calculate the constant parts of the term used to calculate deceleration due to air resistance
+    deceleration_constant = 1.293 * drag_coefficient * cross_section_area / (2 * mass)
     
     def derivative(t, y):
         '''
@@ -55,12 +60,10 @@ def calculate_distance(mass, velocity, angle, drag_coefficient, cross_section_ar
         dydt = np.zeros(4)
 
         # Set the rate of change of x and y
-        dydt[0] = y[2]
-        dydt[1] = y[3]
+        dydt[:2] = y[2:]
 
-        speed = math.sqrt(y[2] ** 2 + y[3] ** 2)
         angle = math.atan(y[3] / y[2])
-        deceleration_air_resistance = 1.293 * drag_coefficient * cross_section_area * speed ** 2 / (2 * mass)
+        deceleration_air_resistance = deceleration_constant * (y[2] ** 2 + y[3] ** 2)
 
         # Update the x and y velocities
         dydt[2] = -deceleration_air_resistance * math.cos(angle)
@@ -99,5 +102,3 @@ def calculate_distance(mass, velocity, angle, drag_coefficient, cross_section_ar
     # Return the x position of the projectile when it hits the ground
     return results.y[0][-1]
 
-if __name__ == "__main__":
-    print(find_launch_angle(0.1, 100, 10000, 0.1, 0.1)) # 45
