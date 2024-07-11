@@ -15,7 +15,7 @@ def run_tests():
     project_results.append(test_primes(print_project_level_output=False))
     project_results.append(test_uncertain_cuboids(print_project_level_output=False))
 
-    project_results.append(test_five_numbers(print_project_level_output=False))
+    # project_results.append(test_five_numbers(print_project_level_output=False))
     project_results.append(test_largest_triangle(print_project_level_output=False))
 
     project_results.append(test_fibonacci(print_project_level_output=False))

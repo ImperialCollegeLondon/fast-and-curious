@@ -57,10 +57,13 @@ def generate_numbers(n, median, mode_, range_):
     
     return numbers
 
-# generate five numbers 
+'''Description from testing_interface.ipynb
+The file `student/five_numbers_monte_carlo.py contains` two funtions, one checks the mode of a list and the other generates a list consisting of five numbers that satisfy the given range, mode and median. The main function, which is called `generate_numbers`, generates a list consisting of five numbers by constraining the numbers with the given range, median and mode. Several lists are expected to be obtained. This is also an example of a Monte Carlo simulation. 
 
+The function, `generate_numbers`, takes sever arguments:
+- `n` is the number of repetition.
+- `median`: Target median value.
+- `mode_`: Target mode value (most frequent number).
+- `range_`: Target range of the numbers.
 
-
-#numbers = generate_numbers(median=7, mode_=8, range_=5)
-
-#print(numbers)
+You need to modify the code appropriately in order to apply a simple Monte Carlo simulation approach to find all five numbers.'''
