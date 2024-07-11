@@ -20,7 +20,6 @@ def largest_triangle_proof(n, radius):
     # set the centre of the circle to (0,0)
     origin_x = 0.0
     origin_y = 0.0
-    #n = 7
 
     #The lower this value the higher quality the circle is with more points generated
     stepSize = 180/n
@@ -32,7 +31,6 @@ def largest_triangle_proof(n, radius):
 
     t = 0.0
     base_length = 2 * radius
-    # while t <= 0.5 * math.pi: #using radian
     while t<=180: # using degrees
         radian_t = math.radians(t)
         h = radius * math.sin(radian_t)
@@ -74,14 +72,5 @@ def largest_triangle_area(n, radius, h=0.0):
             largest_A.append(area)
         elif area>=max(largest_A):
             largest_A.append(area)
-    #print(f"The largest area of a triangle inscribed in a circle with radius {radius} is {max(largest_A):.2f} \n ")
     return max(largest_A)
 
-# Example usage
-# import time
-#radius = 50
-#t0 = time.time()
-#height = largest_triangle_proof(500, radius)
-#max_area = largest_triangle_area(500, radius, height)
-#t1 = time.time()
-#print(f"The largest area of a triangle inscribed in a circle with radius {radius} is {max_area:.2f} \n Runtime was {t1-t0:.5f}")
